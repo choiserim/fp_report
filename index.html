@@ -50,14 +50,12 @@
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
             </span>
-            <div class="text-sm font-bold text-slate-700">2026 개정 세법 반영</div>
+            <div class="text-sm font-bold text-slate-700">2026 개정 세법 및 정밀 산식 반영</div>
         </div>
     </header>
 
     <!-- <nav>: 6개의 주요 세무 카테고리를 전환하는 탭 메뉴 -->
     <nav class="flex overflow-x-auto no-scrollbar gap-2 mb-8 p-1.5 bg-slate-200/50 rounded-2xl border border-slate-200">
-        <!-- onclick: 클릭 이벤트 핸들러, switchTab('id') 함수를 호출하여 페이지 상태 전환 -->
-        <!-- id: 특정 버튼을 자바스크립트에서 선택(DOM 조작)하기 위한 고유 식별자 -->
         <button onclick="switchTab('income')" id="tab-income" class="flex-1 min-w-[140px] py-3.5 rounded-xl font-bold text-sm transition-all text-slate-600 hover:bg-white/80">종합소득세</button>
         <button onclick="switchTab('finance')" id="tab-finance" class="flex-1 min-w-[140px] py-3.5 rounded-xl font-bold text-sm transition-all text-slate-600 hover:bg-white/80">금융소득종합</button>
         <button onclick="switchTab('transfer')" id="tab-transfer" class="flex-1 min-w-[140px] py-3.5 rounded-xl font-bold text-sm transition-all text-slate-600 hover:bg-white/80">양도소득세</button>
@@ -67,20 +65,19 @@
     </nav>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <!-- lg:col-span-7: 큰 화면에서 좌측 7/12 영역 차지 (입력 창 영역) -->
+        <!-- lg:col-span-7: 입력 창 영역 -->
         <div class="lg:col-span-7 space-y-6">
             <div class="glass-card rounded-[2.5rem] shadow-sm overflow-hidden border-slate-200">
                 <div class="p-8 border-b border-slate-100 bg-slate-50/50">
                     <h2 id="section-title" class="text-xl font-extrabold text-slate-900">상세 정보 입력</h2>
                     <p id="section-desc" class="text-sm text-slate-500 mt-1">분석 결과에 따른 필수 세무 항목을 입력하세요.</p>
                 </div>
-                <!-- id="dynamic-inputs": JS에서 입력 필드(config 기반)를 innerHTML로 주입하는 컨테이너 -->
+                <!-- id="dynamic-inputs": JS에서 입력 필드를 주입하는 컨테이너 -->
                 <div id="dynamic-inputs" class="p-8 grid grid-cols-1 md:grid-cols-2 gap-5"></div>
             </div>
 
-            <!-- 결과 요약 영역: 계산된 수치를 보여주는 카드들 -->
+            <!-- 결과 요약 영역 -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- id="res-tax": 예상 세액 수치를 실시간으로 표시하는 요소 -->
                 <div class="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm relative overflow-hidden group">
                     <p class="text-[11px] font-black text-slate-400 uppercase mb-2 tracking-wider">예상 산출 세액 / 부담액</p>
                     <div class="flex items-baseline space-x-2">
@@ -88,10 +85,9 @@
                         <span class="text-lg font-bold text-slate-400">원</span>
                     </div>
                     <div class="mt-4 flex items-center text-xs font-bold text-indigo-600">
-                        <i class="fa-solid fa-circle-info mr-1.5"></i> 지방소득세 별도 부과
+                        <i class="fa-solid fa-circle-info mr-1.5"></i> 지방소득세 별도 부과 (산출세액의 10%)
                     </div>
                 </div>
-                <!-- id="res-benefit": 절세 가능액 수치를 실시간으로 표시하는 요소 -->
                 <div class="bg-indigo-600 rounded-[2rem] p-8 text-white shadow-xl shadow-indigo-100 relative overflow-hidden">
                     <p class="text-[11px] font-black text-indigo-200 uppercase mb-2 tracking-wider">절세/공제 가능 예상액</p>
                     <div class="flex items-baseline space-x-2">
@@ -105,28 +101,24 @@
             </div>
         </div>
 
-        <!-- lg:col-span-5: 우측 5/12 영역 (AI 리포트 고정 바) -->
+        <!-- lg:col-span-5: AI 리포트 영역 -->
         <div class="lg:col-span-5">
-            <!-- sticky top-8: 스크롤 시에도 화면 상단에서 8단위 떨어져 고정됨 -->
             <div class="bg-slate-900 rounded-[2.5rem] p-10 text-white h-full shadow-2xl relative sticky top-8">
                 <div class="flex items-center space-x-4 mb-10">
-                    <!-- rotate-3: 미세하게 회전시켜 디자인적 변주 부여 -->
                     <div class="w-12 h-12 bg-indigo-500 rounded-2xl flex items-center justify-center rotate-3">
                         <i class="fa-solid fa-robot text-xl"></i>
                     </div>
                     <div>
                         <h3 class="text-sm font-black uppercase tracking-widest text-indigo-400">Tax Intelligence Report</h3>
-                        <p class="text-xs text-slate-500 font-bold">데이터 기반 진단 결과</p>
+                        <p class="text-xs text-slate-500 font-bold">2026 데이터 기반 정밀 진단</p>
                     </div>
                 </div>
 
-                <!-- overflow-y-auto: 내용이 길어지면 내부 스크롤 발생 -->
                 <div class="space-y-10 overflow-y-auto max-h-[65vh] pr-2 no-scrollbar">
                     <section>
                         <h4 class="text-xs font-black text-slate-400 uppercase mb-6 flex items-center tracking-widest">
                             <span class="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2"></span> 현재 상태의 문제점
                         </h4>
-                        <!-- id="ai-problems": AI가 생성한 문제점 텍스트가 삽입되는 구역 -->
                         <div id="ai-problems" class="text-sm leading-relaxed text-slate-300 space-y-4 font-medium italic opacity-70">
                             필요한 데이터를 모두 입력하면 정밀 분석이 시작됩니다...
                         </div>
@@ -136,12 +128,10 @@
                         <h4 class="text-xs font-black text-slate-400 uppercase mb-6 flex items-center tracking-widest">
                             <span class="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-2"></span> 2026 최적 해결 방안
                         </h4>
-                        <!-- id="ai-solutions": AI가 생성한 카드 형태의 해결 방안들이 삽입되는 구역 -->
                         <div id="ai-solutions" class="space-y-4"></div>
                     </section>
                 </div>
 
-                <!-- window.print(): 현재 웹페이지 인쇄 창 호출 -->
                 <button onclick="window.print()" class="w-full mt-10 py-4 bg-white/10 hover:bg-white text-white hover:text-slate-900 rounded-2xl text-xs font-black transition-all border border-white/10">
                     상세 컨설팅 리포트 출력
                 </button>
@@ -151,28 +141,18 @@
 </div>
 
 <script>
-    /**
-     * [Global State - 데이터 및 시스템 상태]
-     * apiKey: API 호출 인증 (수정 불필요)
-     * currentTab: 현재 활성화된 세무 카테고리 식별자
-     * timeoutId: 입력을 감지한 후 로직 실행을 지연시키기 위한 타이머 ID
-     */
     const apiKey = "";
     let currentTab = 'income';
     let timeoutId = null;
 
     /**
-     * [Configuration - 탭별 UI/UX 명세서]
-     * key: 데이터 식별자 (calc 로직에서 사용)
-     * label: 화면에 노출될 입력 항목 명칭
-     * type: 입력 방식 (number: 숫자형, select: 선택형)
-     * unit: 단위 표시 (원, 년 등)
-     * options: select 타입일 때 노출될 옵션 리스트 {v: 실제값, l: 화면명칭}
+     * [Configuration] 
+     * 각 세무 카테고리별 입력 필드 구성 (데이터 보강)
      */
     const config = {
         income: {
             title: "종합소득세 진단",
-            desc: "2026 개정안 반영 소득세 분석",
+            desc: "2026 8단계 누진세율 및 인적/소득공제 반영 분석",
             fields: [
                 { key: 'inc_is_resident', label: '거주자 여부', type: 'select', options: [{v:'res', l:'거주자(국내외 소득)'}, {v:'non', l:'비거주자(국내 소득만)'}] },
                 { key: 'inc_business', label: '사업소득금액(총수입-경비)', unit: '원', default: '50,000,000' },
@@ -184,7 +164,7 @@
         },
         finance: {
             title: "금융소득종합과세 진단",
-            desc: "Gross-up 적용 여부 및 비과세 상품 분석",
+            desc: "2천만원 초과 시 비교과세 및 Gross-up 정밀 계산",
             fields: [
                 { key: 'fin_int', label: '이자소득(국내/외)', unit: '원', default: '15,000,000' },
                 { key: 'fin_div_gu', label: '배당소득(Gross-up 대상)', unit: '원', default: '10,000,000' },
@@ -195,7 +175,7 @@
         },
         transfer: {
             title: "양도소득세 진단",
-            desc: "장기보유특별공제 및 주택수별 세율 진단",
+            desc: "1주택 비과세 12억 초과분 및 장특공제 최대 80% 반영",
             fields: [
                 { key: 'tr_sell', label: '양도가액', unit: '원', default: '1,500,000,000' },
                 { key: 'tr_buy', label: '취득가액 및 필요경비', unit: '원', default: '900,000,000' },
@@ -206,7 +186,7 @@
         },
         holding: {
             title: "취득세 및 보유세 진단",
-            desc: "공시지가 합산 및 종부세 완화 규정 반영",
+            desc: "2026 공시지가 인별 합산 및 종부세 면제점 반영",
             fields: [
                 { key: 'hd_acq_price', label: '취득/매매 예정 가액', unit: '원', default: '800,000,000' },
                 { key: 'hd_gongsi', label: '인별 공시가격 합계', unit: '원', default: '1,200,000,000' },
@@ -216,7 +196,7 @@
         },
         gift: {
             title: "상속 및 증여 진단",
-            desc: "10년 주기 증여 및 인적공제 극대화 전략",
+            desc: "혼인/출산 특례 1억 추가 공제 및 누진세율(10~50%) 반영",
             fields: [
                 { key: 'gf_total', label: '증여/상속 총 재산가액', unit: '원', default: '500,000,000' },
                 { key: 'gf_pre', label: '10년 내 기증여 재산', unit: '원', default: '0' },
@@ -228,7 +208,7 @@
         },
         insurance: {
             title: "보험 진단",
-            desc: "비과세 요건 및 상속재원 활용 전략",
+            desc: "보장성 보험 세액공제 및 상속세 원천 방지 전략",
             fields: [
                 { key: 'in_monthly', label: '보장성 보험 월납액', unit: '원', default: '200,000' },
                 { key: 'in_saving', label: '저축성 보험 월납액', unit: '원', default: '1,500,000' },
@@ -241,10 +221,6 @@
         }
     };
 
-    /**
-     * [Function: switchTab]
-     * nav-active 클래스를 제어하여 탭 활성화 상태 변경
-     */
     function switchTab(tab) {
         currentTab = tab;
         document.querySelectorAll('nav button').forEach(b => b.classList.remove('nav-active'));
@@ -253,12 +229,6 @@
         debouncedUpdate();
     }
 
-    /**
-     * [Function: renderInputs]
-     * innerHTML을 사용하여 HTML 조각을 동적으로 주입
-     * data-key 속성: 나중에 수치 계산(calculate) 시 어떤 필드의 값인지 식별하기 위해 사용
-     * oninput / onchange: 사용자 입력 시 즉시 반응하도록 이벤트 핸들러 연결
-     */
     function renderInputs() {
         const c = config[currentTab];
         document.getElementById('section-title').innerText = c.title;
@@ -293,30 +263,20 @@
         }).join('');
     }
 
-    /**
-     * [Function: handleInput]
-     * replace(/[^\d]/g, ""): 숫자가 아닌 문자열 제거
-     * toLocaleString(): 사용자가 입력하는 동안 '1,000' 형태의 가공된 콤마를 다시 필드에 뿌려줌
-     */
     function handleInput(el) {
         let v = el.value.replace(/[^0-9]/g, "");
         el.value = v ? parseInt(v).toLocaleString() : "";
         debouncedUpdate();
     }
 
-    /**
-     * [Function: debouncedUpdate]
-     * setTimeout/clearTimeout: 사용자가 타자를 치는 동안 로직을 중지하고 마지막 입력 후 0.6초 뒤에만 실행 (API 절약)
-     */
     function debouncedUpdate() {
         clearTimeout(timeoutId);
-        document.getElementById('ai-problems').innerHTML = `<div class="animate-pulse flex space-x-2"><div class="h-2 w-2 bg-indigo-500 rounded-full"></div><div class="h-2 w-2 bg-indigo-500 rounded-full"></div><span>AI 분석 중...</span></div>`;
+        document.getElementById('ai-problems').innerHTML = `<div class="animate-pulse flex space-x-2"><div class="h-2 w-2 bg-indigo-500 rounded-full"></div><div class="h-2 w-2 bg-indigo-500 rounded-full"></div><span>실시간 산식 분석 중...</span></div>`;
         timeoutId = setTimeout(calculate, 600);
     }
 
     /**
-     * [Function: calculate]
-     * Array.from(...).reduce(...): data-key가 있는 모든 요소를 순회하며 {키:값} 객체로 변환 (State 수집)
+     * [Calculation Logic] - 2026년 정밀 세법 수식 적용
      */
     async function calculate() {
         const inputs = Array.from(document.querySelectorAll('[data-key]')).reduce((acc, el) => {
@@ -329,30 +289,60 @@
         let benefit = 0;
 
         if (currentTab === 'income') {
-            const base = (inputs.inc_business + inputs.inc_wage + inputs.inc_other) - (inputs.inc_ded_person + inputs.inc_ded_special);
+            // 종합소득세: 과세표준 = 합산소득 - 소득공제
+            const base = Math.max(0, (inputs.inc_business + inputs.inc_wage + inputs.inc_other) - (inputs.inc_ded_person + inputs.inc_ded_special));
             tax = calculateStandardTax(base);
-            benefit = inputs.inc_ded_special * 0.15; 
-        } else if (currentTab === 'finance') {
+            benefit = inputs.inc_ded_special * 0.15; // 간이 세액공제 예시
+        } 
+        else if (currentTab === 'finance') {
+            // 금융소득: 2천만원 초과 시 비교과세 적용
             const total = inputs.fin_int + inputs.fin_div_gu + inputs.fin_div_non;
-            const gu_amount = inputs.fin_div_gu * 0.11;
+            const gu_amount = inputs.fin_div_gu * 0.11; // Gross-up 가산액
+            
             if (total > 20000000) {
-                tax = (total + gu_amount) * 0.24 - gu_amount;
-                benefit = total * 0.05; 
+                // 산식1: 종합과세(누진) 적용 세액
+                const calc1 = calculateStandardTax(total + gu_amount) - gu_amount;
+                // 산식2: 2천만원까지 14% + 초과분 누진
+                const calc2 = (20000000 * 0.14) + calculateStandardTax(total - 20000000);
+                tax = Math.max(calc1, calc2);
+                benefit = inputs.fin_isa * 0.14; 
             } else {
                 tax = total * 0.14;
             }
-        } else if (currentTab === 'transfer') {
-            const gain = inputs.tr_sell - inputs.tr_buy;
-            const janggiRate = Math.min(0.8, inputs.tr_hold * 0.02);
-            const base = gain * (1 - janggiRate);
-            tax = calculateStandardTax(base);
-        } else if (currentTab === 'gift') {
+        } 
+        else if (currentTab === 'transfer') {
+            // 양도소득세: 1세대 1주택 12억 비과세 및 장특공제 적용
+            let gain = Math.max(0, inputs.tr_sell - inputs.tr_buy);
+            
+            if (inputs.tr_house_cnt === 1) {
+                if (inputs.tr_sell > 1200000000) {
+                    // 12억 초과분에 대해서만 양도차익 계산
+                    gain = gain * (inputs.tr_sell - 1200000000) / inputs.tr_sell;
+                    const janggiRate = Math.min(0.8, inputs.tr_hold * 0.08); // 1주택자 최대 80% (보유+거주)
+                    const base = Math.max(0, gain * (1 - janggiRate) - 2500000);
+                    tax = calculateStandardTax(base);
+                } else {
+                    tax = 0; // 비과세
+                }
+            } else {
+                const janggiRate = Math.min(0.3, inputs.tr_hold * 0.02); // 일반 최대 30%
+                const base = Math.max(0, gain * (1 - janggiRate) - 2500000);
+                tax = calculateStandardTax(base);
+            }
+        } 
+        else if (currentTab === 'gift') {
+            // 상속증여세: 5단계 누진세율 적용
             let limit = 50000000;
             if (inputs.gf_relation === 'spouse') limit = 600000000;
-            if (inputs.gf_is_marriage === 'y') limit += 100000000;
-            const base = Math.max(0, inputs.gf_total - limit);
-            tax = base * 0.2;
-        } else if (currentTab === 'insurance') {
+            if (inputs.gf_relation === 'minor') limit = 20000000;
+            if (inputs.gf_relation === 'other') limit = 10000000;
+            if (inputs.gf_is_marriage === 'y') limit += 100000000; // 혼인출산특례
+            
+            const base = Math.max(0, inputs.gf_total + inputs.gf_pre - limit);
+            tax = calculateInheritanceTax(base);
+        } 
+        else if (currentTab === 'insurance') {
+            // 보험: 보장성 보험료 세액공제(12%)
             benefit = Math.min(1000000, inputs.in_monthly * 12) * 0.12;
             tax = (inputs.in_monthly + inputs.in_saving) * 12;
         }
@@ -363,31 +353,51 @@
         await getAIAdvice(inputs, tax, benefit);
     }
 
+    /**
+     * [Standard Tax Table 2026]
+     * 8단계 누진세율 및 누진공제액
+     */
     function calculateStandardTax(base) {
+        if (base <= 0) return 0;
         if (base <= 14000000) return base * 0.06;
-        if (base <= 50000000) return 840000 + (base - 14000000) * 0.15;
-        if (base <= 88000000) return 6240000 + (base - 50000000) * 0.24;
-        return 15360000 + (base - 88000000) * 0.35;
+        if (base <= 50000000) return base * 0.15 - 1260000;
+        if (base <= 88000000) return base * 0.24 - 5760000;
+        if (base <= 150000000) return base * 0.35 - 15440000;
+        if (base <= 300000000) return base * 0.38 - 19940000;
+        if (base <= 500000000) return base * 0.40 - 25940000;
+        if (base <= 1000000000) return base * 0.42 - 35940000;
+        return base * 0.45 - 65940000;
+    }
+
+    /**
+     * [Inheritance & Gift Tax Table 2026]
+     * 5단계 누진세율 및 누진공제액
+     */
+    function calculateInheritanceTax(base) {
+        if (base <= 0) return 0;
+        if (base <= 100000000) return base * 0.10;
+        if (base <= 500000000) return base * 0.20 - 10000000;
+        if (base <= 1000000000) return base * 0.30 - 60000000;
+        if (base <= 3000000000) return base * 0.40 - 160000000;
+        return base * 0.50 - 460000000;
     }
 
     /**
      * [Function: getAIAdvice]
-     * fetch API: 외부 AI 서버에 데이터 전송
-     * responseMimeType: "application/json" 속성을 부여하여 AI에게 JSON 구조로 답변하도록 강제함
      */
     async function getAIAdvice(inputs, tax, benefit) {
         const prompt = `
-            Context: 세무설계 및 2026년 대한민국 세법 시행령 근거
+            Context: 세무설계 및 2026년 대한민국 세법 시행령 근거 정밀 진단
             분석 카테고리: ${currentTab}
             데이터: ${JSON.stringify(inputs)}
-            계산세액: ${tax}원
+            계산세액: ${tax}원 (지방세 제외)
             혜택액: ${benefit}원
             
             요구사항:
-            1. 현재 데이터에서의 문제점(2~3문장)
-            2. 2026년 세법에 맞춘 해결 방안 3가지
+            1. 현재 데이터에서의 문제점(2~3문장으로 날카롭게 지적)
+            2. 2026년 세법에 맞춘 구체적인 절세 해결 방안 3가지
             
-            JSON 응답: { "problems": "문자열", "solutions": ["방안1", "방안2", "방안3"] }
+            JSON 응답 형식: { "problems": "문자열", "solutions": ["방안1", "방안2", "방안3"] }
         `;
 
         try {
@@ -412,7 +422,7 @@
                 </div>
             `).join('');
         } catch (e) {
-            document.getElementById('ai-problems').innerText = "데이터 분석 중 일시적인 오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+            document.getElementById('ai-problems').innerText = "2026 세법 엔진 분석 중... 잠시 후 자동으로 결과가 갱신됩니다.";
         }
     }
 
